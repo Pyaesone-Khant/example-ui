@@ -4,9 +4,7 @@ export function Flickers({
     flickers
 }: Pick<Article, 'flickers'>) {
 
-    const { total, data } = flickers;
-
-    const lastFlicker = data[data.length - 1];
+    const lastFlicker = flickers && flickers?.data[flickers?.data.length - 1];
 
     return (
         <div
@@ -32,12 +30,12 @@ export function Flickers({
                 <p
                     className="text-white bg-blue-900 size-7 rounded-full  flex items-center justify-center ring-2 ring-white text-xs"
                 >
-                    +{Number(total) - 2}
+                    +{Number(flickers?.total) - 2}
                 </p>
             </div>
             <p>
                 <strong className="mr-1">
-                    {lastFlicker.name}
+                    {lastFlicker?.name}
                 </strong>
                 and 5 others flicked this post.
             </p>

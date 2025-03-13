@@ -1,5 +1,5 @@
 'use client';
-import { CreateArticleForm } from "@/components/Article";
+import { ArticleLoader, CreateArticleForm } from "@/components/Article";
 import dynamic from "next/dynamic";
 import DummyJson from "../dummy.json";
 
@@ -23,6 +23,8 @@ export default function Home() {
           />
         ))
       }
+
+      <ArticleLoader />
 
     </section>
   )
