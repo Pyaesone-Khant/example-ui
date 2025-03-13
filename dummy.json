@@ -1,19 +1,19 @@
 [
     {
         "id": 1,
+        "title": "Post 1",
         "author": {
             "id": 1,
-            "name": "John Doe",
-            "avatar": "avatar1.png"
+            "name": "Jane Doe",
+            "avatar": "/assets/girl_avatar.png"
         },
         "created_at": "2023-01-01T00:00:00Z",
-        "body": "This is an article body",
-        "media": [
-            {
-                "type": "image",
-                "url": "image1.png"
-            }
-        ],
+        "body": "Lorem ipsum dolor sit amet consectetur. Ipsum fermentum neque sollicitudin tempor tortor cursus ultricies et. Id tortor fames nunc nisi congue suscipit.",
+        "media": null,
+        "product": null,
+        "sharedArticle": false,
+        "minRead": 5,
+        "flickers": null,
         "isLiked": true,
         "likes_count": 10,
         "comment_count": 5,
@@ -22,19 +22,24 @@
     },
     {
         "id": 2,
+        "title": "Post 2",
         "author": {
             "id": 102,
-            "name": "Jane Smith",
-            "avatar": "https://example.com/avatars/janesmith.jpg"
+            "name": "Jane Doe",
+            "avatar": "/assets/girl_avatar.png"
         },
         "created_at": "2025-03-11T08:30:00Z",
-        "body": "NestJS provides a modular approach to building scalable server-side applications...",
+        "body": "Lorem ipsum dolor sit amet consectetur. Ipsum fermentum neque sollicitudin tempor tortor cursus ultricies et. Id tortor fames nunc nisi congue suscipit.",
         "media": [
             {
                 "type": "video",
-                "url": "https://example.com/videos/nestjs-scalability.mp4"
+                "url": "/assets/video1.mp4"
             }
         ],
+        "product": null,
+        "sharedArticle": false,
+        "minRead": 5,
+        "flickers": null,
         "isLiked": true,
         "likes_count": 215,
         "comment_count": 32,
@@ -43,16 +48,157 @@
     },
     {
         "id": 3,
+        "title": "The Art of Simple Living",
         "author": {
             "id": 102,
-            "name": "Jane Smith",
-            "avatar": "https://example.com/avatars/janesmith.jpg"
+            "name": "Jane Doe",
+            "avatar": "/assets/girl_avatar.png"
+        },
+        "created_at": "2025-03-11T08:30:00Z",
+        "body": "Explore how simplifying your surroundings and mindset can lead to a more fulfilling life. Learn practical steps for decluttering, focusing on meaningful relationships, and making choices that bring calm and clarity to everyday routines. Embrace minimalism, and find joy in what truly matters.",
+        "media": [
+            {
+                "type": "image",
+                "url": "/assets/image8.png"
+            }
+        ],
+        "product": null,
+        "sharedArticle": true,
+        "minRead": 3,
+        "flickers": null,
+        "isLiked": false,
+        "likes_count": 15,
+        "comment_count": 32,
+        "hand_pointing_count": 8,
+        "trending_count": 72
+    },
+    {
+        "id": 4,
+        "title": "Post 4",
+        "author": {
+            "id": 102,
+            "name": "Jane Doe",
+            "avatar": "/assets/girl_avatar.png"
+        },
+        "created_at": "2025-03-11T08:30:00Z",
+        "body": "UI Designဆွဲတယ်ဆိုတာ Productတစ်ခုရဲ့ Interfaceကို ကြည့်လို့လှရုံသက်သက် ဆွဲရတာမျိုးမဟုတ်ဘဲ UX Research, User Personna, User Flow and Journey Mapping စတဲ့ UX Design Process အဆင့်ဆင့်ကရလာတဲ့ resultတွေ၊ Decision တွေပေါ်မှာအခြေခံပြီးမှ Productကိုအ... See more",
+        "media": [
+            {
+                "type": "image",
+                "url": "/assets/image1.png"
+            },
+            {
+                "type": "image",
+                "url": "/assets/image2.png"
+            },
+            {
+                "type": "image",
+                "url": "/assets/image3.png"
+            }
+        ],
+        "product": null,
+        "sharedArticle": false,
+        "minRead": 5,
+        "flickers": {
+            "total": 5,
+            "data": [
+                {
+                    "id": 1,
+                    "name": "John Doe",
+                    "avatar": "/assets/avatar3.png"
+                },
+                {
+                    "id": 2,
+                    "name": "Alice",
+                    "avatar": "/assets/avatar4.png"
+                },
+                {
+                    "id": 3,
+                    "name": "James",
+                    "avatar": "/assets/avatar3.png"
+                },
+                {
+                    "id": 4,
+                    "name": "Danny",
+                    "avatar": "/assets/avatar4.png"
+                },
+                {
+                    "id": 5,
+                    "name": "Charlie Robert",
+                    "avatar": "/assets/avatar3.png"
+                }
+            ]
+        },
+        "isLiked": false,
+        "likes_count": 21,
+        "comment_count": 32,
+        "hand_pointing_count": 8,
+        "trending_count": 72
+    },
+    {
+        "id": 5,
+        "title": "Post 5",
+        "author": {
+            "id": 102,
+            "name": "Jane Doe",
+            "avatar": "/assets/girl_avatar.png"
+        },
+        "created_at": "2025-03-11T08:30:00Z",
+        "body": "Unleash power and creativity with the iPad Pro M4. Redefine what's possible—get yours today!",
+        "media": [
+            {
+                "type": "image",
+                "url": "/assets/image4.png"
+            },
+            {
+                "type": "image",
+                "url": "/assets/image5.png"
+            },
+            {
+                "type": "image",
+                "url": "/assets/image6.png"
+            }
+        ],
+        "product": {
+            "name": "iPad Pro 13-Inch (M4)",
+            "description": "iPad Pro 13-Inch (M4): Built for Apple Intelligence, Ultra Retina XDR Display, 256GB, 12MP Front/Back Camera, LiDAR Scanner, Wi-Fi 6E, Face ID, All-Day Battery Life — Space Black",
+            "price": 1299.99
+        },
+        "sharedArticle": false,
+        "minRead": 5,
+        "isLiked": false,
+        "flickers": null,
+        "likes_count": 115,
+        "comment_count": 32,
+        "hand_pointing_count": 8,
+        "trending_count": 72
+    },
+    {
+        "id": 6,
+        "title": "Post 6",
+        "author": {
+            "id": 102,
+            "name": "Jane Doe",
+            "avatar": "/assets/girl_avatar.png"
         },
         "created_at": "2025-03-11T08:30:00Z",
         "body": "Lorem ipsum dolor sit amet consectetur. Ipsum fermentum neque sollicitudin tempor tortor cursus ultricies et. Id tortor fames nunc nisi congue suscipit.",
-        "media": null,
+        "media": [
+            {
+                "type": "video",
+                "url": "/assets/video2.mp4"
+            },
+            {
+                "type": "image",
+                "url": "/assets/image7.png"
+            }
+        ],
+        "product": null,
+        "sharedArticle": false,
+        "minRead": 5,
+        "flickers": null,
         "isLiked": false,
-        "likes_count": 215,
+        "likes_count": 55,
         "comment_count": 32,
         "hand_pointing_count": 8,
         "trending_count": 72
