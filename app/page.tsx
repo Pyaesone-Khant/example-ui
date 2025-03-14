@@ -11,10 +11,9 @@ const Article = dynamic(
 export default function Home() {
   return (
     <section
-      className=" max-w-3xl mx-auto"
+      className=" max-w-3xl mx-auto pb-10"
     >
       <CreateArticleForm />
-
       {
         DummyJson.map((article) => (
           <Article
