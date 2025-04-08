@@ -1,31 +1,44 @@
 "use client";
 
-import { WEBSOCKET_URL } from "@/constants/websocket-url";
+import { PIE_SOCKET } from "@/constants/websocket-url";
 import { useEffect, useRef, useState } from "react";
+import { AskRoomId } from "./AskRoomId";
 import { ChatBox } from "./ChatBox";
 import { Messages } from "./Messages";
 
 export function WebSocketChat() {
-    const [messages, setMessages] = useState<{ text: string; sender: "you" | "server" }[]>([]);
+    const [messages, setMessages] = useState<{ text: string; sender: string }[]>([]);
+    const [roomId, setRoomId] = useState<string | null>(null);
+    const [username, setUsername] = useState<string | null>(null);
     const ws = useRef<WebSocket | null>(null);
 
     useEffect(() => {
-        connectWebSocket();
+        if (roomId) {
+            connectWebSocket(roomId);
+        }
 
         return () => {
-            ws.current?.close();
-        };
-    }, []);
+            if (ws.current) {
+                ws.current.close();
+                ws.current = null;
+            }
+        }
+    }, [roomId]);
 
-    const connectWebSocket = () => {
-        ws.current = new WebSocket(WEBSOCKET_URL!);
+    const connectWebSocket = (roomId: string) => {
+        ws.current = new WebSocket(`${PIE_SOCKET.URL}/${roomId}?apiKey=${PIE_SOCKET.API_KEY}`);
 
         ws.current.onopen = () => {
-            setMessages((prev) => [...prev, { text: "Connected to server!", sender: "server" }]);
+            console.log("WebSocket connection established!");
+            ws.current?.send(JSON.stringify({
+                sender: "server",
+                text: `${username} joined the room!`
+            }))
         };
 
         ws.current.onmessage = (event) => {
-            setMessages((prev) => [...prev, { text: event.data, sender: "server" }]);
+            const data = JSON.parse(event.data);
+            setMessages((prev) => [...prev, data]);
         };
 
         ws.current.onerror = (error) => {
@@ -40,22 +53,42 @@ export function WebSocketChat() {
 
     const sendMessage = (input: string) => {
         if (ws.current && input.trim()) {
-            ws.current.send(input);
-            setMessages((prev) => [...prev, { text: input, sender: "you" }]);
+            const payload = {
+                sender: username!,
+                text: input
+            }
+            ws.current.send(JSON.stringify(payload));
+            setMessages((prev) => [...prev, payload]);
         }
     };
 
     return (
-        <section className="p-4 rounded-md shadow-md w-full space-y-4 border border-gray-300 max-w-3xl mx-auto mt-4">
-            <h2
-                className="text-lg font-semibold"
-            > Websocket Chat </h2>
-            <Messages
-                messages={messages}
-            />
-            <ChatBox
-                sendMessage={sendMessage}
-            />
-        </section>
+        <div
+            className="p-10"
+        >
+            {
+                (roomId && username) ? (
+                    <section className="p-4 rounded-md shadow-md w-full space-y-4 border border-gray-300 max-w-4xl mx-auto mt-4">
+                        <h2
+                            className="text-lg font-semibold"
+                        > Websocket Chat {`<Room - ${roomId} >`} </h2>
+                        <Messages
+                            username={username}
+                            messages={messages}
+                        />
+                        <ChatBox
+                            sendMessage={sendMessage}
+                        />
+                    </section>
+                ) : (
+                    <AskRoomId
+                        onJoinRoom={(roomId: string, username: string) => {
+                            setRoomId(roomId);
+                            setUsername(username);
+                        }}
+                    />
+                )
+            }
+        </div>
     );
 }
